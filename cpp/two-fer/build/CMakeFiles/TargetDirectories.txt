@@ -1,0 +1,4 @@
+/home/vaishak/exercism/cpp/two-fer/build/CMakeFiles/two-fer.dir
+/home/vaishak/exercism/cpp/two-fer/build/CMakeFiles/test_two-fer.dir
+/home/vaishak/exercism/cpp/two-fer/build/CMakeFiles/edit_cache.dir
+/home/vaishak/exercism/cpp/two-fer/build/CMakeFiles/rebuild_cache.dir
