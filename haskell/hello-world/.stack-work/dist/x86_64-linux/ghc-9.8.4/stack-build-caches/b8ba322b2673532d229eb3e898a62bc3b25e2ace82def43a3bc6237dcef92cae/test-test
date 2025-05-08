@@ -1,0 +1,14 @@
+/home/vaishak/.ghcup/ghc/9.8.4/lib/ghc-9.8.4/lib/x86_64-linux-ghc-9.8.4/rts-1.0.2/include/ghcversion.h:
+  hash: 95162794a3bf5e6167631fdd41a509846597231d523d0f21a76713b1f801373c
+/home/vaishak/exercism/haskell/hello-world/.stack-work/dist/x86_64-linux/ghc-9.8.4/build/test/autogen/Paths_hello_world.hs:
+  hash: 0d204a44f3f3caf98234499df00e96f06a7392aac7bf3e56f585202c19b23f0a
+/home/vaishak/exercism/haskell/hello-world/.stack-work/dist/x86_64-linux/ghc-9.8.4/build/test/autogen/cabal_macros.h:
+  hash: d95e43feb22935138b2e74d9e2300b23d70fb22b731ca8ee64df9c9022a930ff
+/home/vaishak/exercism/haskell/hello-world/hello-world.cabal:
+  hash: d89cf13da884ab313a18371ece5b70a793e35a336248fc8ba54c81df0a0f7ecd
+/home/vaishak/exercism/haskell/hello-world/package.yaml:
+  hash: 160a1a88b7a5bd0f6f1ffd3e24f56cbba5e4d4fbd7f76ea73d649199ca9d76a5
+/home/vaishak/exercism/haskell/hello-world/test/Tests.hs:
+  hash: e3c9948060203a794b444e4596c90a63085f60817a31e9d626c9a3191142e0e5
+/usr/include/stdc-predef.h:
+  hash: cb08cd5d4cc059a90833ac48a284d25016e8d56ded8ad4cd98d8ac59cc5053f3
