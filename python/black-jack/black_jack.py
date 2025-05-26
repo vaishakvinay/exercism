@@ -60,8 +60,7 @@ def value_of_ace(card_one, card_two):
 
     if value_one + value_two <= 10:
         return 11
-    if value_one + value_two <= 10:
-        return 11
+
     return 1
     
 def is_blackjack(card_one, card_two):
