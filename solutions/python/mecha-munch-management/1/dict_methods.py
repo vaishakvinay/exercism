@@ -8,8 +8,10 @@ def add_item(current_cart, items_to_add):
     :param items_to_add: iterable - items to add to the cart.
     :return: dict - the updated user cart dictionary.
     """
+
     for item in items_to_add:
-            current_cart[item] = current_cart.get(item, 0) + 1
+        current_cart.setdefault(item, 0)
+        current_cart[item] += 1
     return current_cart
 
 
@@ -19,10 +21,12 @@ def read_notes(notes):
     :param notes: iterable of items to add to cart.
     :return: dict - a user shopping cart dictionary.
     """
-    current_cart = {}
-    for note in notes:
-            current_cart[note] = current_cart.get(note, 0) + 1
-    return current_cart
+    cart={}
+
+    for item in notes:
+        cart.setdefault(item,0)
+        cart[item] +=1
+    return cart
 
 
 def update_recipes(ideas, recipe_updates):
@@ -32,6 +36,7 @@ def update_recipes(ideas, recipe_updates):
     :param recipe_updates: iterable -  with updates for the ideas section.
     :return: dict - updated "recipe ideas" dict.
     """
+
     ideas.update(recipe_updates)
     return ideas
 
@@ -43,8 +48,9 @@ def sort_entries(cart):
     :return: dict - users shopping cart sorted in alphabetical order.
     """
 
+    new=(sorted(cart.items()))
+    return new
     
-    return dict(sorted(cart.items()))
 
 
 def send_to_store(cart, aisle_mapping):
@@ -54,16 +60,18 @@ def send_to_store(cart, aisle_mapping):
     :param aisle_mapping: dict - aisle and refrigeration information dictionary.
     :return: dict - fulfillment dictionary ready to send to store.
     """
+    fulfillment = {}
 
-    fulfillment_cart = {}
-    for item, quantity in cart.items():
-        if item in aisle_mapping:
-            aisle, refrigeration = aisle_mapping[item]
-            fulfillment_cart[item] = [quantity, aisle, refrigeration]
+   
+    for item in sorted(cart, reverse=True):
+        quantity = cart[item]
+        aisle, refrigerated = aisle_mapping[item]
 
-    # Return after processing all items
-    return dict(sorted(fulfillment_cart.items(), reverse=True))
-        
+        fulfillment[item] = [quantity, aisle, refrigerated]
+
+    return fulfillment
+
+
 def update_store_inventory(fulfillment_cart, store_inventory):
     """Update store inventory levels with user order.
 
@@ -72,12 +80,16 @@ def update_store_inventory(fulfillment_cart, store_inventory):
     :return: dict - store_inventory updated.
     """
 
-    for item, (order_qty, aisle, refrigeration) in fulfillment_cart.items():
-        if item in store_inventory:
-            store_qty, aisle_info, refrig_info = store_inventory[item]
-            updated_qty = store_qty - order_qty
-            if updated_qty <= 0:
-                store_inventory[item] = ["Out of Stock", aisle_info, refrig_info]
-            else:
-                store_inventory[item] = [updated_qty, aisle_info, refrig_info]
+    for item, details in fulfillment_cart.items():
+        bought_quantity = details[0]
+
+        stock_quantity = store_inventory[item][0]
+
+        new_stock = stock_quantity - bought_quantity
+
+        if new_stock == 0:
+            store_inventory[item][0] = "Out of Stock"
+        else:
+            store_inventory[item][0] = new_stock
+
     return store_inventory
