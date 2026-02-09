@@ -1,6 +1,16 @@
 import re
 
 def abbreviate(words):
-    # Match letters at start of string or after space, hyphen, or underscore
-    letters = re.findall(r"(?:^|[ _-])([A-Za-z])", words)
-    return "".join(letters).upper()
+
+   
+    words = words.replace("'", "")
+
+  
+    found = re.findall(r"[A-Za-z]+", words)
+
+    acronym = ""
+
+    for word in found:
+        acronym += word[0].upper()
+
+    return acronym
