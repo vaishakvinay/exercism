@@ -1,14 +1,18 @@
 def find_anagrams(word, candidates):
-    word_lower = word.lower()
-    sorted_word = sorted(word_lower)
-    anagrams = []
+
+    word_clean = word.lower()
+    sorted_word = sorted(word_clean)
+
+    matches = []
 
     for candidate in candidates:
-        candidate_lower = candidate.lower()
-        if candidate_lower == word_lower:
-            continue  # skip same word
-        if sorted(candidate_lower) == sorted_word:
-            anagrams.append(candidate)  # keep original case
+        candidate_clean = candidate.lower()
 
-    return anagrams
+        # skip same word
+        if candidate_clean == word_clean:
+            continue
 
+        if sorted(candidate_clean) == sorted_word:
+            matches.append(candidate)
+
+    return matches
