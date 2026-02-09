@@ -1,10 +1,9 @@
-
 def abbreviate(words):
-    result = []
-    words = words.replace("_", " ").replace("-", " ")
+    text = words.replace("-", " ").replace("_", " ").split()
 
-    for w in words.split():
-        
-            result.append(w[0].upper())
+    new = []
 
-    return "".join(result)
+    for ch in text:
+        new.append(ch[0].upper())
+
+    return "".join(new)
