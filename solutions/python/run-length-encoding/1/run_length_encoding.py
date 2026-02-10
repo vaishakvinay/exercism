@@ -1,45 +1,45 @@
 def decode(string):
-    if not string:
-        return ""
 
-    result = ""
-    count_str = ""
+    num = ""
+    new = ""
 
     for ch in string:
-        if ch.isdigit():
-            count_str += ch
-        else:
-            count = int(count_str) if count_str else 1
-            result += ch * count
-            count_str = ""   # reset
 
-    return result
+        if ch.isdigit():
+            num += ch
+
+        else:
+            count = int(num) if num else 1
+            new += ch * count
+            num = ""          
+
+    return new
 
 
 def encode(string):
-    if not string:
+
+    if string == "":
         return ""
 
-    result = ""
-    current_run_character = string[0]
-    run_length = 1
+    new = ""
+    count = 1
 
     for i in range(1, len(string)):
-        current_char = string[i]
-        if current_char == current_run_character:
-            run_length += 1
+
+        if string[i] == string[i - 1]:
+            count += 1
         else:
-            if run_length == 1:
-                result += current_run_character
+            if count == 1:
+                new += string[i - 1]
             else:
-                result += str(run_length) + current_run_character
-            current_run_character = current_char
-            run_length = 1
+                new += str(count) + string[i - 1]
 
-    # flush last run
-    if run_length == 1:
-        result += current_run_character
+            count = 1
+
+    # last group
+    if count == 1:
+        new += string[-1]
     else:
-        result += str(run_length) + current_run_character
+        new += str(count) + string[-1]
 
-    return result
+    return new
