@@ -1,12 +1,20 @@
 def flatten(iterable):
-    flat = []
+    
+
+    result = []
+
     for item in iterable:
-        if item is None:
-            # Skip null values
+
+        # If item is a list → flatten it recursively
+        if isinstance(item, list):
+            result.extend(flatten(item))
+
+        # If item is None → ignore it
+        elif item is None:
             continue
-        # Check if item is iterable but NOT a string (strings should be treated as elements)
-        if isinstance(item, (list, tuple)):
-            flat.extend(flatten(item))
+
+        # Otherwise → add to result
         else:
-            flat.append(item)
-    return flat
+            result.append(item)
+
+    return result
