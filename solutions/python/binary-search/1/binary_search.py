@@ -1,19 +1,23 @@
 def find(search_list, value):
+
     if not search_list:
         raise ValueError("value not in array")
 
-    
-    search_list.sort()
     low = 0
     high = len(search_list) - 1
-    
+
     while low <= high:
+
         mid = (low + high) // 2
+
         if search_list[mid] == value:
             return mid
-        elif search_list[mid] < value:
-            low = mid + 1
-        else:
+
+        elif value < search_list[mid]:
             high = mid - 1
-    
+
+        else:
+            low = mid + 1
+
+
     raise ValueError("value not in array")
