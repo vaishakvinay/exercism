@@ -1,25 +1,51 @@
-rhyme = [
-    "horse and the hound and the horn that belonged to the ",
-    "farmer sowing his corn that kept the ",
-    "rooster that crowed in the morn that woke the ",
-    "priest all shaven and shorn that married the ",
-    "man all tattered and torn that kissed the ",
-    "maiden all forlorn that milked the ",
-    "cow with the crumpled horn that tossed the ",
-    "dog that worried the ",
-    "cat that killed the ",
-    "rat that ate the ",
-    "malt that lay in the ",
-    "house that Jack built."
+subjects = [
+    "the house that Jack built.",
+    "the malt",
+    "the rat",
+    "the cat",
+    "the dog",
+    "the cow with the crumpled horn",
+    "the maiden all forlorn",
+    "the man all tattered and torn",
+    "the priest all shaven and shorn",
+    "the rooster that crowed in the morn",
+    "the farmer sowing his corn",
+    "the horse and the hound and the horn"
 ]
 
-def recite(start_verse, end_verse):
-    finished = []
-    for i in range(start_verse, end_verse + 1):
-        line = "This is the "
-        # We want to concatenate the last i elements of rhyme in reverse order
-        for n in range(-i, 0):
-            line += rhyme[n]
-        finished.append(line)
-    return finished
+actions = [
+    "",
+    "that lay in ",
+    "that ate ",
+    "that killed ",
+    "that worried ",
+    "that tossed ",
+    "that milked ",
+    "that kissed ",
+    "that married ",
+    "that woke ",
+    "that kept ",
+    "that belonged to "
+]
 
+
+def recite(start_verse, end_verse):
+
+    verses = []
+
+    for verse in range(start_verse, end_verse + 1):
+
+        index = verse - 1
+        line = "This is "
+
+        
+        for j in range(index, -1, -1):
+
+            line += subjects[j]
+
+            if j > 0:
+                line += " " + actions[j]
+
+        verses.append(line)
+
+    return verses
