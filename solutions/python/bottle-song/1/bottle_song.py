@@ -1,15 +1,45 @@
-num = ('no','one', 'two', 'three', 'four', 'five', 'six',
-        'seven', 'eight', 'nine' , 'ten')
-bottles = ('bottles', 'bottle')
+numbers = [
+    "no",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten"
+]
+
+
 def recite(start, take=1):
-    result = []
-    for i in range(start, start - take, -1):
-        one_two = (f"{num[i]} green {bottles[i == 1]} hanging on the wall,").capitalize()
-        result.extend([one_two] * 2) 
-        result.append('And if one green bottle should accidentally fall,')
-        result.append(f"There'll be {num[i - 1]} green {bottles[i == 2]} hanging on the wall.")
 
-        if take > 1 and i > start - take + 1:
-            result.append('')
+    verses = []
 
-    return result
+    for n in range(start, start - take, -1):
+
+        current = numbers[n].capitalize()
+        next_word = numbers[n - 1]
+
+        bottle_current = "bottle" if n == 1 else "bottles"
+        bottle_next = "bottle" if (n - 1) == 1 else "bottles"
+
+        verses.append(
+            f"{current} green {bottle_current} hanging on the wall,"
+        )
+        verses.append(
+            f"{current} green {bottle_current} hanging on the wall,"
+        )
+        verses.append(
+            "And if one green bottle should accidentally fall,"
+        )
+        verses.append(
+            f"There'll be {next_word} green {bottle_next} hanging on the wall."
+        )
+
+      
+        if n != start - take + 1:
+            verses.append("")
+
+    return verses
