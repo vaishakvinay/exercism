@@ -1,33 +1,49 @@
-gifts = [
-    "a Partridge in a Pear Tree.",
-    "two Turtle Doves,",
-    "three French Hens,",
-    "four Calling Birds,",
-    "five Gold Rings,",
-    "six Geese-a-Laying,",
-    "seven Swans-a-Swimming,",
-    "eight Maids-a-Milking,",
-    "nine Ladies Dancing,",
-    "ten Lords-a-Leaping,",
-    "eleven Pipers Piping,",
-    "twelve Drummers Drumming,"
-]
-days = ("first", "second", "third", "fourth", "fifth", "sixth",
-        "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth")
+days = {
+    1: "first",
+    2: "second",
+    3: "third",
+    4: "fourth",
+    5: "fifth",
+    6: "sixth",
+    7: "seventh",
+    8: "eighth",
+    9: "ninth",
+    10: "tenth",
+    11: "eleventh",
+    12: "twelfth",
+}
 
+gifts = {
+    1: "a Partridge in a Pear Tree.",
+    2: "two Turtle Doves,",
+    3: "three French Hens,",
+    4: "four Calling Birds,",
+    5: "five Gold Rings,",
+    6: "six Geese-a-Laying,",
+    7: "seven Swans-a-Swimming,",
+    8: "eight Maids-a-Milking,",
+    9: "nine Ladies Dancing,",
+    10: "ten Lords-a-Leaping,",
+    11: "eleven Pipers Piping,",
+    12: "twelve Drummers Drumming,",
+}
 
 
 def recite(start_verse, end_verse):
-    result = []
     verses = []
-    for day_num in range(start_verse, end_verse + 1):
-        line = f"On the {days[day_num-1]} day of Christmas my true love gave to me: "
-        gifts_list = []
-        for gift in range(day_num, 0, -1):
-            if gift == 1 and day_num > 1:
-                gifts_list.append("and " + gifts[0])
+
+    for day in range(start_verse, end_verse + 1):
+        line = f"On the {days[day]} day of Christmas my true love gave to me: "
+
+        parts = []
+        for gift_day in range(day, 0, -1):
+            if gift_day == 1 and day > 1:
+                parts.append("and " + gifts[gift_day])
             else:
-                gifts_list.append(gifts[gift-1])
-        line += " ".join(gifts_list)
+                parts.append(gifts[gift_day])
+
+        line += " ".join(parts)
         verses.append(line)
+
     return verses
+
