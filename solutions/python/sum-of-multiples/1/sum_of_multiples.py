@@ -1,8 +1,10 @@
 def sum_of_multiples(limit, multiples):
     
-    result=set()
-    for i in range(1,limit):
-        for m in multiples:
-            if m != 0 and i%m==0:
-                result.add(i)
+    result=[]
+    for num in range (1,limit):
+        for factor in multiples:
+            if factor*num<limit:
+                result.append(factor*num)
+    result=set(result)
+
     return sum(result)
