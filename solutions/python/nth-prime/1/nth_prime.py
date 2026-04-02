@@ -1,19 +1,25 @@
 def prime(number):
-    if number < 1:
-        raise ValueError('there is no zeroth prime')
 
-    primes = [2]
-    n = 2 #number to check if prime
-    while len(primes) < number:
-        n += 1                     # move to next number
-        is_prime = True
-        for p in primes:
-            if n % p == 0:
-                is_prime = False
+    if number == 0:
+        raise ValueError("there is no zeroth prime")
+
+    
+    result = []
+    candidate = 2
+
+    while len(result) < number:
+
+        prime_number = True
+
+        for i in range(2, candidate):
+
+            if candidate % i == 0:
+                prime_number = False
                 break
-        if is_prime:
-            primes.append(n)
 
-    return primes[-1]              # last prime in the list
+        if prime_number:
+            result.append(candidate)
 
+        candidate += 1
 
+    return result[-1]
